@@ -1,8 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+   <children>
+      <HBox layoutX="385.0" layoutY="193.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+               <children>
+                  <Button fx:id="loadButton" mnemonicParsing="false" prefWidth="100.0" text="Wczytaj" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" prefWidth="100.0" text="Zapisz" />
+                  <Button fx:id="addButton" mnemonicParsing="false" prefWidth="100.0" text="Dodaj" />
+                  <Button fx:id="raportButton" mnemonicParsing="false" prefWidth="100.0" text="Raport" />
+               </children>
+            </VBox>
+            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="430.0">
+              <columns>
+                <TableColumn fx:id="firstNameColumn" prefWidth="175.0" text="Imię" />
+                <TableColumn fx:id="lastNameColumn" prefWidth="175.0" text="Nazwisko" />
+                  <TableColumn fx:id="roomNumberColumn" text="Pokój" />
+              </columns>
+            </TableView>
+            <VBox prefHeight="560.0" prefWidth="400.0" spacing="20.0">
+               <children>
+                  <AnchorPane prefHeight="240.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0" spacing="10.0">
+                                 <children>
+                                    <Label text="Imię" />
+                                    <TextField />
+                                    <Label text="Nazwisko" />
+                                    <TextField />
+                                    <Label text="Nr pokoju" />
+                                    <TextField />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0" spacing="10.0">
+                                 <children>
+                                    <Label text="Godz. rozpoczęcia pracy" />
+                                    <TextField />
+                                    <Label text="Godz. zakończenia pracy" />
+                                    <TextField alignment="TOP_LEFT" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="300.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="182.0" layoutY="6.0" prefWidth="100.0" text="Plan biura" textAlignment="CENTER" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="0.0">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="280.0" layoutX="123.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                     </children>
+                  </AnchorPane>
+               </children></VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>
-
