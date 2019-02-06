@@ -24,7 +24,7 @@ private Stage primaryStage;
 		try {
 			AnchorPane pane = loader.load();
 			
-			primaryStage.setMinWidth(500.0);
+			primaryStage.setMinWidth(1000.0);
 			primaryStage.setMaxHeight(600.0);
 			
 			Scene scene = new Scene(pane);

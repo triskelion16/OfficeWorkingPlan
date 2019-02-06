@@ -17,17 +17,17 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <Button fx:id="loadButton" mnemonicParsing="false" prefWidth="100.0" text="Wczytaj" />
-                  <Button fx:id="saveButton" mnemonicParsing="false" prefWidth="100.0" text="Zapisz" />
-                  <Button fx:id="addButton" mnemonicParsing="false" prefWidth="100.0" text="Dodaj" />
-                  <Button fx:id="raportButton" mnemonicParsing="false" prefWidth="100.0" text="Raport" />
+                  <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadButton" prefWidth="100.0" text="Wczytaj" />
+                  <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButton" prefWidth="100.0" text="Zapisz" />
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButton" prefWidth="100.0" text="Dodaj" />
+                  <Button fx:id="raportButton" mnemonicParsing="false" onAction="#raportButton" prefWidth="100.0" text="Raport" />
                </children>
             </VBox>
             <TableView fx:id="tableView" prefHeight="200.0" prefWidth="430.0">
               <columns>
                 <TableColumn fx:id="firstNameColumn" prefWidth="175.0" text="Imię" />
                 <TableColumn fx:id="lastNameColumn" prefWidth="175.0" text="Nazwisko" />
-                  <TableColumn fx:id="roomNumberColumn" text="Pokój" />
+                  <TableColumn fx:id="roomNumberColumn" resizable="false" text="Pokój" />
               </columns>
             </TableView>
             <VBox prefHeight="560.0" prefWidth="400.0" spacing="20.0">
@@ -39,19 +39,19 @@
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0" spacing="10.0">
                                  <children>
                                     <Label text="Imię" />
-                                    <TextField />
+                                    <TextField fx:id="firstNameTextField" />
                                     <Label text="Nazwisko" />
-                                    <TextField />
+                                    <TextField fx:id="lastNameTextField" />
                                     <Label text="Nr pokoju" />
-                                    <TextField />
+                                    <TextField fx:id="roomNumberTextField" />
                                  </children>
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0" spacing="10.0">
                                  <children>
                                     <Label text="Godz. rozpoczęcia pracy" />
-                                    <TextField />
+                                    <TextField fx:id="startHourTextField" />
                                     <Label text="Godz. zakończenia pracy" />
-                                    <TextField alignment="TOP_LEFT" />
+                                    <TextField fx:id="stopHourTextField" alignment="TOP_LEFT" />
                                  </children>
                               </VBox>
                            </children>
