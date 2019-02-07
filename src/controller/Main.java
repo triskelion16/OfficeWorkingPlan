@@ -28,16 +28,13 @@ private Stage primaryStage;
 			primaryStage.setMaxHeight(600.0);
 			
 			Scene scene = new Scene(pane);
-			MainWindowController mainWindowController = loader.getController();
-			mainWindowController.setMain(this);
-			mainWindowController.setPrimaryStage(primaryStage);
 			
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Błąd tworzenia okna!");
+			//e.printStackTrace();
 		}
-		
 	}
 	
 	public static void main(String[] args) {

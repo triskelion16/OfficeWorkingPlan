@@ -1,8 +1,8 @@
 package controller;
 
-import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import javafx.collections.FXCollections;
@@ -13,15 +13,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import model.Person;
 
 public class MainWindowController {
-	private Main main;
-	private Stage primaryStage;
-	
 	private ObservableList<Person> personList = FXCollections.observableArrayList();
-	
 	
 	@FXML private Button loadButton;
 	@FXML private Button saveButton;
@@ -43,28 +38,25 @@ public class MainWindowController {
 	public void initialize() {
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-		roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber"));
+		roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber")); 
+	}
+	
+	private void printTableData() {
+		tableView.setItems(personList);
 		
-		//setList();
-//		tableView.setItems(personList);
-//		
-//		tableView.getSelectionModel().selectedItemProperty().addListener((ov,oldVal,newVal) -> {
-//			System.out.println(newVal.getFirstName() + " | " + newVal.getLastName() + " | " + newVal.getRoomNumber());
-//			
-//			firstNameTextField.setText(newVal.getFirstName());
-//			lastNameTextField.setText(newVal.getLastName());
-//			roomNumberTextField.setText(newVal.getRoomNumber().toString());
-//			startHourTextField.setText(newVal.getStartHour().toString());
-//			stopHourTextField.setText(newVal.getStopHour().toString());
-//		}); 
+		tableView.getSelectionModel().selectedItemProperty().addListener((ov,oldVal,newVal) -> {
+			System.out.println(newVal.getFirstName() + " | " + newVal.getLastName() + " | " + newVal.getRoomNumber());
+			
+			firstNameTextField.setText(newVal.getFirstName());
+			lastNameTextField.setText(newVal.getLastName());
+			roomNumberTextField.setText(newVal.getRoomNumber().toString());
+			startHourTextField.setText(newVal.getStartHour().toString());
+			stopHourTextField.setText(newVal.getStopHour().toString());
+		}); 
 	}
 	
 	//====== load button =======================================
 	@FXML public void loadButton() {
-		
-		personList.clear();
-		
-		//ArrayList<Person> persons = new ArrayList<>();
 		String firstName;
 		String lastName;
 		Integer roomNumber;
@@ -82,35 +74,53 @@ public class MainWindowController {
 				personList.add(new Person(firstName, lastName, roomNumber, startHour, stopHour));
 			}
 			
-			tableView.setItems(personList);
+			printTableData();
 			
-			tableView.getSelectionModel().selectedItemProperty().addListener((ov,oldVal,newVal) -> {
-				System.out.println(newVal.getFirstName() + " | " + newVal.getLastName() + " | " + newVal.getRoomNumber());
-				
-				firstNameTextField.setText(newVal.getFirstName());
-				lastNameTextField.setText(newVal.getLastName());
-				roomNumberTextField.setText(newVal.getRoomNumber().toString());
-				startHourTextField.setText(newVal.getStartHour().toString());
-				stopHourTextField.setText(newVal.getStopHour().toString());
-			}); 
-			
-			
-		} catch (IOException e) {
+			loadButton.setDisable(true);
+		} catch (Exception e) {
 			System.out.println("Błąd wczytywania pliku!");
 			//e.printStackTrace();
 		}
-		
-		//loadButton.setDisable(true);
 	}
 	
 	//====== save button =======================================
 	@FXML public void saveButton() {
-		System.out.println("save");
+		char separator = ' ';
+		
+		try(PrintWriter out = new PrintWriter("/home/persons.txt")) {
+			
+			for(Person p : personList) {
+				System.out.println(p);
+				
+				out.print(p.getFirstName() + separator);
+				out.print(p.getLastName() + separator);
+				out.print(p.getRoomNumber().toString() + separator);
+				out.print(p.getStartHour().toString() + separator);
+				out.print(p.getStopHour().toString() + System.lineSeparator());
+			}
+			
+		} catch (FileNotFoundException e) {
+			System.out.println("Błąd zapisu do pliku!");
+			//e.printStackTrace();
+		}
 	}
 	
 	//====== add button =======================================
 	@FXML public void addButton() {
-		System.out.println("add");
+		try {
+			String firstName = firstNameTextField.getText();
+			String lastName = lastNameTextField.getText();
+			Integer roomNumber = Integer.parseInt(roomNumberTextField.getText());
+			Integer startHour = Integer.parseInt(startHourTextField.getText());
+			Integer stopHour = Integer.parseInt(stopHourTextField.getText());
+			
+			personList.add(new Person(firstName, lastName, roomNumber, startHour, stopHour));
+			
+			printTableData();
+		} catch (Exception e) {
+			System.out.println("Wszystkie pola muszą być prawidłowo wypełnione!");
+			//e.printStackTrace();
+		}
 	}
 	
 	//====== raport button =======================================
@@ -118,17 +128,4 @@ public class MainWindowController {
 		System.out.println("raport");
 	}
 	
-//	private void setList() {
-//		personList.add(new Person("Jan", "Nowak", 10, 8, 16));
-//		personList.add(new Person("Tom", "Kowalski", 25, 8, 16));
-//	}
-	
-	
-	public void setMain(Main main) {
-		this.main = main;
-	}
-	public void setPrimaryStage(Stage primaryStage) {
-		this.primaryStage = primaryStage;
-	}
-
 }
