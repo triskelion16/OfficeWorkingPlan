@@ -3,6 +3,8 @@ package controller;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 import javafx.collections.FXCollections;
@@ -125,7 +127,30 @@ public class MainWindowController {
 	
 	//====== raport button =======================================
 	@FXML public void raportButton() {
-		System.out.println("raport");
+		ArrayList<Person> persons = new ArrayList<>();
+		for(Person p : personList) {
+			persons.add(p);
+		}
+		
+		char separator = ' ';
+		
+		try(PrintWriter out = new PrintWriter("/home/raport.txt")) {
+			Collections.sort(persons);
+			
+			for(Person p : persons) {
+				System.out.println(p);
+				
+				out.print(p.getFirstName() + separator);
+				out.print(p.getLastName() + separator);
+				out.print(p.getRoomNumber().toString() + separator);
+				out.print(p.getStartHour().toString() + separator);
+				out.print(p.getStopHour().toString() + System.lineSeparator());
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Błąd zapisu do pliku!");
+			//e.printStackTrace();
+		}
 	}
 	
 }

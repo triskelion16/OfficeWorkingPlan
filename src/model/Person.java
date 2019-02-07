@@ -1,11 +1,12 @@
 package model;
 
-public class Person {
+public class Person implements Comparable<Person>{
 	private String firstName;
 	private String lastName;
 	private Integer roomNumber;
 	private Integer startHour;
 	private Integer stopHour;
+	private Integer workingHours;
 	
 	public Person(String firstName, String lastName, Integer roomNumber, Integer startHour, Integer stopHour) {
 		this.firstName = firstName;
@@ -13,6 +14,7 @@ public class Person {
 		this.roomNumber = roomNumber;
 		this.startHour = startHour;
 		this.stopHour = stopHour;
+		workingHours = stopHour - startHour;
 	}
 
 	public String getFirstName() {
@@ -50,9 +52,21 @@ public class Person {
 		this.stopHour = stopHour;
 	}
 	
+	public Integer getWorkingHours() {
+		return workingHours;
+	}
+	public void setWorkingHours(Integer workingHours) {
+		this.workingHours = workingHours;
+	}
+
 	@Override
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", roomNumber=" + roomNumber
-				+ ", startHour=" + startHour + ", stopHour=" + stopHour + "]";
+				+ ", startHour=" + startHour + ", stopHour=" + stopHour + ", workingHours=" + workingHours + "]";
+	}
+
+	@Override
+	public int compareTo(Person person) {
+		return Integer.compare(workingHours, person.workingHours);
 	}
 }
