@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import model.Person;
 
 public class MainWindowController {
@@ -36,11 +37,24 @@ public class MainWindowController {
 	@FXML private TextField startHourTextField;
 	@FXML private TextField stopHourTextField;
 	
+	@FXML private Pane room1;
+	@FXML private Pane room2;
+	@FXML private Pane room3;
+	@FXML private Pane room4;
+	@FXML private Pane room5;
+	@FXML private Pane room6;
+	@FXML private Pane room7;
+	@FXML private Pane room8;
+	@FXML private Pane room9;
+	@FXML private Pane room10;
+	
 	
 	public void initialize() {
 		firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
 		lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
 		roomNumberColumn.setCellValueFactory(new PropertyValueFactory<>("roomNumber")); 
+		
+		defaultRoomDisable();
 	}
 	
 	private void printTableData() {
@@ -48,6 +62,8 @@ public class MainWindowController {
 		
 		tableView.getSelectionModel().selectedItemProperty().addListener((ov,oldVal,newVal) -> {
 			System.out.println(newVal.getFirstName() + " | " + newVal.getLastName() + " | " + newVal.getRoomNumber());
+			
+			selectedRoom(newVal.getRoomNumber());
 			
 			firstNameTextField.setText(newVal.getFirstName());
 			lastNameTextField.setText(newVal.getLastName());
@@ -152,5 +168,59 @@ public class MainWindowController {
 			//e.printStackTrace();
 		}
 	}
+	
+	//====== room selected ===================
+		private void selectedRoom(Integer roomNumber) {
+			defaultRoomDisable();
+			
+			switch (roomNumber) {
+			case 1:
+				room1.setDisable(false);
+				break;
+			case 2:
+				room2.setDisable(false);
+				break;
+			case 3:
+				room3.setDisable(false);
+				break;
+			case 4:
+				room4.setDisable(false);
+				break;
+			case 5:
+				room5.setDisable(false);
+				break;
+			case 6:
+				room6.setDisable(false);
+				break;
+			case 7:
+				room7.setDisable(false);
+				break;
+			case 8:
+				room8.setDisable(false);
+				break;
+			case 9:
+				room9.setDisable(false);
+				break;
+			case 10:
+				room10.setDisable(false);
+				break;
+
+			default:
+				break;
+			}
+		}
+		
+		private void defaultRoomDisable() {
+			room1.setDisable(true);
+			room2.setDisable(true);
+			room3.setDisable(true);
+			room4.setDisable(true);
+			room5.setDisable(true);
+			room6.setDisable(true);
+			room7.setDisable(true);
+			room8.setDisable(true);
+			room9.setDisable(true);
+			room10.setDisable(true);
+		}
 	
 }

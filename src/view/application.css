@@ -1,1 +1,24 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+.background {
+	-fx-background-color: lightskyblue;
+}
+
+.button {
+	-fx-background-color: lightgoldenrodyellow;
+	-fx-font-weight: bold;
+}
+
+.label {
+	-fx-font-weight: bold;
+}
+
+.textField {
+	-fx-background-color: lightgoldenrodyellow;
+}
+
+.room {
+	-fx-font-size: 26;
+	-fx-border-color: black;
+	-fx-background-color: cyan;
+}

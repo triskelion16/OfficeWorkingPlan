@@ -7,17 +7,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainWindowController">
    <children>
       <HBox layoutX="385.0" layoutY="193.0" prefHeight="100.0" prefWidth="200.0" spacing="15.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                <children>
-                  <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadButton" prefWidth="100.0" text="Wczytaj" />
+                  <Button fx:id="loadButton" mnemonicParsing="false" onAction="#loadButton" prefWidth="100.0" stylesheets="@application.css" text="Wczytaj" />
                   <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveButton" prefWidth="100.0" text="Zapisz" />
                   <Button fx:id="addButton" mnemonicParsing="false" onAction="#addButton" prefWidth="100.0" text="Dodaj" />
                   <Button fx:id="raportButton" mnemonicParsing="false" onAction="#raportButton" prefWidth="100.0" text="Raport" />
@@ -38,20 +39,20 @@
                            <children>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0" spacing="10.0">
                                  <children>
-                                    <Label text="Imię" />
-                                    <TextField fx:id="firstNameTextField" />
-                                    <Label text="Nazwisko" />
-                                    <TextField fx:id="lastNameTextField" />
-                                    <Label text="Nr pokoju" />
-                                    <TextField fx:id="roomNumberTextField" />
+                                    <Label styleClass="mylabel" stylesheets="@application.css" text="Imię" />
+                                    <TextField fx:id="firstNameTextField" styleClass="textField" stylesheets="@application.css" />
+                                    <Label styleClass="mylabel" text="Nazwisko" />
+                                    <TextField fx:id="lastNameTextField" styleClass="textField" stylesheets="@application.css" />
+                                    <Label styleClass="mylabel" text="Nr pokoju" />
+                                    <TextField fx:id="roomNumberTextField" styleClass="textField" stylesheets="@application.css" />
                                  </children>
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="200.0" prefWidth="190.0" spacing="10.0">
                                  <children>
-                                    <Label text="Godz. rozpoczęcia pracy" />
-                                    <TextField fx:id="startHourTextField" />
-                                    <Label text="Godz. zakończenia pracy" />
-                                    <TextField fx:id="stopHourTextField" alignment="TOP_LEFT" />
+                                    <Label styleClass="mylabel" text="Godz. rozpoczęcia pracy" />
+                                    <TextField fx:id="startHourTextField" styleClass="textField" stylesheets="@application.css" />
+                                    <Label styleClass="mylabel" text="Godz. zakończenia pracy" />
+                                    <TextField fx:id="stopHourTextField" alignment="TOP_LEFT" styleClass="textField" stylesheets="@application.css" />
                                  </children>
                               </VBox>
                            </children>
@@ -65,7 +66,105 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="280.0" layoutX="123.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                        <Rectangle id="office" fill="#ffffff00" height="280.0" layoutX="123.0" layoutY="50.0" stroke="BLACK" strokeType="OUTSIDE" styleClass="office" width="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+                        <HBox alignment="CENTER" fillHeight="false" layoutX="100.0" layoutY="31.0" prefHeight="140.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                           <children>
+                              <Pane fx:id="room1" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="28.0" layoutY="35.0" text="1" textAlignment="CENTER">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="room2" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="35.0" text="2">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="room3" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="35.0" text="3">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="room4" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="35.0" text="4">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="room5" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="35.0" text="5">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" fillHeight="false" layoutX="100.0" layoutY="186.0" prefHeight="140.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                           <children>
+                              <Pane fx:id="room6" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="35.0" text="6">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="room7" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="35.0" text="7">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="room8" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="35.0" text="8">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="room9" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="28.0" layoutY="35.0" text="9">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="room10" prefHeight="100.0" prefWidth="75.0" styleClass="room" stylesheets="@application.css">
+                                 <children>
+                                    <Label layoutX="19.0" layoutY="35.0" text="10">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children></VBox>
